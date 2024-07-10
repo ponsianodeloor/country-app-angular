@@ -1,2 +1,45 @@
-<h1>Country App</h1>
-<router-outlet />
+<!-- header -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Angular 2 CRUD</h1>
+    </div>
+  </div>
+  <div class="row">
+    <!-- navigation -->
+    <div class="col-3">
+      <ul>
+        <li>
+          <a [routerLink]="['/home']">Home</a>
+        </li>
+        <li>
+          <a [routerLink]="['/about']">About</a>
+        </li>
+        <li>
+          <a [routerLink]="['/contact']">Contact</a>
+        </li>
+      </ul>
+      <!--
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" [class.active]="router.url == '/home'">
+          <a [routerLink]="['/home']">Home</a>
+        </li>
+        <li role="presentation" [class.active]="router.url == '/about'">
+          <a [routerLink]="['/about']">About</a>
+        </li>
+        <li role="presentation" [class.active]="router.url == '/contact'">
+          <a [routerLink]="['/contact']">Contact</a>
+        </li>
+        <li role="presentation" [class.active]="router.url == '/products'">
+          <a [routerLink]="['/products']">Products</a>
+        </li>
+      </ul>
+      -->
+    </div>
+
+    <!-- main content -->
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
