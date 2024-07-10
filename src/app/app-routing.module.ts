@@ -6,26 +6,11 @@ import {RootPageComponent} from "./shared/pages/root-page/root-page.component";
 import {ContactPageComponent} from "./shared/pages/contact-page/contact-page.component";
 
 const routes: Routes = [
-  {
-    path: '',
-    component: RootPageComponent
-  },
-  {
-    path: 'home',
-    component: HomePageComponent
-  },
-  {
-    path: 'about',
-    component: AboutPageComponent
-  },
-  {
-    path: 'contact',
-    component: ContactPageComponent
-  },
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  { path: '', component: RootPageComponent },
+  { path: 'home', component: HomePageComponent },
+  { path: 'about', component: AboutPageComponent },
+  { path: 'contact', component: ContactPageComponent },
+  { path: '**', redirectTo: '' }
 
 ];
 
