@@ -25,10 +25,15 @@ export class ByCapitalPageComponent {
     console.log(query);
     console.log('Search by capital page');
 
+    if (query.length === 0) {
+      this.countries = [];
+      return;
+    }
+
     this.countriesService.searchCountryByCapital(query)
       .subscribe((countries:Country[]) => {
         console.log(countries);
-        this.countries = [...countries]
+        this.countries = [...countries];
       });
   }
 
