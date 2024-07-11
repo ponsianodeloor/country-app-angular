@@ -43,4 +43,30 @@ export class CountriesService {
       })
     );
   }
+
+  /**
+   * Get all countries from the API https://restcountries.com//v3.1 by Region
+   * @param name
+   */
+  searchCountryByRegion(name: string):Observable<Country[]> {
+    return this.httpClient.get<Country[]>(`${this.url}/region/${name}`).pipe(
+      catchError(err => {
+        console.log('Error en el catchError:', err);
+        return of([]);
+      })
+    );
+  }
+
+  /**
+   * Get all countries from the API https://restcountries.com//v3.1 by Name
+   * @param name
+   */
+  searchCountryByName(name: string):Observable<Country[]> {
+    return this.httpClient.get<Country[]>(`${this.url}/name/${name}`).pipe(
+      catchError(err => {
+        console.log('Error en el catchError:', err);
+        return of([]);
+      })
+    );
+  }
 }
