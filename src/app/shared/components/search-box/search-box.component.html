@@ -1,1 +1,12 @@
-<input type="text" class="form-control" [placeholder]="placeholder">
+<input
+  type="text"
+  class="form-control"
+  [placeholder]="placeholder"
+  (keyup.enter)="onSearch(txtSearch.value)"
+  #txtSearch
+>
+
+<!--se puede usar $event.toString() en lugar de txtSearch.value
+en caso de que se quiera pasar el evento como argumento-->
+<!--(keyup.enter)="onSearchToString($event.toString())"-->
+<!--#txtSearch se elimina -->
