@@ -15,5 +15,31 @@
   <div class="col-12">
     <hr>
     <h2>Tabla de resultados</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>País</th>
+          <th>Capital</th>
+
+          <th>Bandera</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countries">
+          <td>{{country.name.official}}</td>
+          <td>{{country.capital}}</td>
+          <td>
+            <img
+              [src]="country.flags.png"
+              [alt]="'Bandera de ' + country.flags.alt"
+              alt="Bandera de {{country.name}}"
+              style="width: 50px"
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
 </div>
