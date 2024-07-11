@@ -1,34 +1,44 @@
 <h2>Países</h2>
 <hr>
 
-<div class="col-3">
-  <ul class="list-group">
-    <li class="list-group-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
-      <a
-        [routerLink]="['/']"
-        [routerLinkActive]="['link-dark']"
-      >
-        Root
-      </a>
-    </li>
-    <li class="list-group-item" [routerLinkActive]="['active']">
-      <a
-        [routerLink]="['/home']"
-        [routerLinkActive]="['link-dark']"
-      >
-        Home
-      </a>
-    </li>
-    <li class="list-group-item" [routerLinkActive]="['active']">
-      <a
-        [routerLink]="['/about']"
-        [routerLinkActive]="['link-dark']"
-      >
-        About
-      </a>
-    </li>
-    <li class="list-group-item" [routerLinkActive]="['active']">
-      <a [routerLink]="['/contact']" [routerLinkActive]="['link-danger']">Contact</a>
-    </li>
-  </ul>
-</div>
+<ul class="list-group">
+  <li class="list-group-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+    <a
+      [routerLink]="['/']"
+      [routerLinkActive]="['link-dark']"
+    >
+      Root
+    </a>
+  </li>
+  <li class="list-group-item" [routerLinkActive]="['active']">
+    <a
+      [routerLink]="['/home']"
+      [routerLinkActive]="['link-dark']"
+    >
+      Home
+    </a>
+  </li>
+  <li class="list-group-item" [routerLinkActive]="['active']">
+    <a
+      [routerLink]="['/about']"
+      [routerLinkActive]="['link-dark']"
+    >
+      About
+    </a>
+  </li>
+  <li class="list-group-item" [routerLinkActive]="['active']">
+    <a [routerLink]="['/contact']" [routerLinkActive]="['link-dark']">Contact</a>
+  </li>
+  <li class="list-group-item" [routerLinkActive]="['active']">
+    <a [routerLink]="['/countries']" [routerLinkActive]="['link-dark']">Countries</a>
+    <ul>
+      <li>
+        <a [routerLink]="['/countries/by-region']" [routerLinkActive]="['link-dark']">By Region</a>
+      </li>
+      <li>
+        <a [routerLink]="['/countries/by-capital']" [routerLinkActive]="['link-dark']">Add</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
