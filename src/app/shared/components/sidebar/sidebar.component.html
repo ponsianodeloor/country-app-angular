@@ -27,16 +27,28 @@
     </a>
   </li>
   <li class="list-group-item" [routerLinkActive]="['active']">
+    <a [routerLink]="['/countries/by-region']" [routerLinkActive]="['link-dark']">Region</a>
+  </li>
+  <li class="list-group-item" [routerLinkActive]="['active']">
+    <a [routerLink]="['/countries/by-country']" [routerLinkActive]="['link-dark']">País</a>
+  </li>
+  <li class="list-group-item" [routerLinkActive]="['active']">
+    <a [routerLink]="['/countries/by-capital']" [routerLinkActive]="['link-dark']">Capital</a>
+  </li>
+  <li class="list-group-item" [routerLinkActive]="['active']">
     <a [routerLink]="['/contact']" [routerLinkActive]="['link-dark']">Contact</a>
   </li>
   <li class="list-group-item" [routerLinkActive]="['active']">
     <a [routerLink]="['/countries']" [routerLinkActive]="['link-dark']">Countries</a>
     <ul>
-      <li>
-        <a [routerLink]="['/countries/by-region']" [routerLinkActive]="['link-dark']">By Region</a>
+      <li class="list-group-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['/countries/by-region']" [routerLinkActive]="['link-dark']">Region</a>
       </li>
-      <li>
-        <a [routerLink]="['/countries/by-capital']" [routerLinkActive]="['link-dark']">Add</a>
+      <li class="list-group-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['/countries/by-country']" [routerLinkActive]="['link-dark']">País</a>
+      </li>
+      <li class="list-group-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['/countries/by-capital']" [routerLinkActive]="['link-dark']">Capital</a>
       </li>
     </ul>
   </li>
