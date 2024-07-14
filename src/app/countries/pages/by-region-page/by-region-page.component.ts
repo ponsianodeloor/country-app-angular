@@ -11,6 +11,7 @@ export class ByRegionPageComponent {
 
   public placeholder: string = 'Búsqueda por Region';
   public countries: Country[] = [];
+  public isLoading: boolean = false;
 
   constructor(
     private countriesService: CountriesService,
@@ -30,10 +31,13 @@ export class ByRegionPageComponent {
       return;
     }
 
+    this.isLoading = true;
+
     this.countriesService.searchCountryByRegion(query)
       .subscribe((countries: Country[]) => {
         console.log(countries);
         this.countries = [...countries];
+        this.isLoading = false;
       });
   }
 
