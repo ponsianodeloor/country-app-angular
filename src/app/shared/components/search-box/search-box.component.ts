@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -7,7 +7,7 @@ import { debounceTime } from 'rxjs/operators';
   templateUrl: './search-box.component.html',
   styleUrl: './search-box.component.css'
 })
-export class SearchBoxComponent {
+export class SearchBoxComponent implements OnDestroy{
 
   @Input()
   public placeholder: string = 'Search...';
@@ -25,6 +25,10 @@ export class SearchBoxComponent {
       this.txtSearch.emit(query);
       console.log('Search box component');
     });
+  }
+
+  ngOnDestroy(): void {
+        this.searchSubject.unsubscribe();
   }
 
   public onSearch(query: string): void {
