@@ -6,6 +6,7 @@
   <table class="table">
     <thead>
     <tr>
+      <th>Acción</th>
       <th>País</th>
       <th>Population</th>
       <th>Capital</th>
@@ -14,6 +15,14 @@
     </thead>
     <tbody>
     <tr *ngFor="let country of countries">
+      <td>
+        <a
+          [routerLink]="['/countries/by', country.cca3]"
+          class="btn btn-primary"
+        >
+          Ver
+        </a>
+      </td>
       <td>{{country.name.official}}</td>
       <td>
         {{country.population | number }}

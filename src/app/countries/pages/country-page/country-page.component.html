@@ -1,1 +1,30 @@
-<p>country-page works!</p>
+
+<div *ngIf="country;else noCountry">
+  <h1>{{ country.name.common }}</h1>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <li class="list-group">
+          <b>Capital:</b> {{ country.capital }}
+        </li>
+        <li class="list-group">
+          <b>Área:</b> {{ country.area | number }} km²
+        </li>
+        <li class="list-group">
+          <b>Población:</b> {{ country.population | number }}
+        </li>
+        <li class="list-group">
+          <b>Región:</b> {{ country.region }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #noCountry>
+  <div class="alert alert-warning text-center">
+    No hay país para mostrar
+  </div>
+</ng-template>

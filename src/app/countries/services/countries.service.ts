@@ -16,6 +16,33 @@ export class CountriesService {
   ) { }
 
   /**
+   * Get all countries from the API https://restcountries.com//v3.1 by code
+   * @param code
+   */
+  /*searchCountryByAlphaCode(code: string):Observable<Country | undefined> {
+    return this.httpClient.get<Country>(`${this.url}/alpha/${code}`)
+      .pipe(
+        map(country => country),
+        catchError(err => {
+        console.log('Error en el catchError:', err);
+        return [];
+      })
+    );
+  }*/
+
+  searchCountryByAlphaCode( code: string ): Observable<Country | null> {
+
+    const url = `${ this.url }/alpha/${ code }`;
+
+    return this.httpClient.get<Country[]>( url )
+      .pipe(
+        map( countries => countries.length > 0 ? countries[0]: null ),
+        catchError( () => of(null) )
+      );
+  }
+
+
+  /**
    * Get all countries from the API https://restcountries.com//v3.1 by Capital
    * in array of objects
    * @param name
