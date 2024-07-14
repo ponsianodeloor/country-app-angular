@@ -2,6 +2,7 @@
   type="text"
   class="form-control"
   [placeholder]="placeholder"
+  (keyup)="onKeypress(txtSearch.value)"
   (keyup.enter)="onSearch(txtSearch.value)"
   #txtSearch
 >

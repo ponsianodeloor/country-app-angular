@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'shared-search-box',
@@ -13,11 +15,26 @@ export class SearchBoxComponent {
   @Output()
   public txtSearch: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  // Es un tipo de observable que permite emitir valores a los suscriptores
+  private searchSubject: Subject<string> = new Subject<string>();
+
+  constructor() {
+    this.searchSubject.pipe(
+      debounceTime(300) // Adjust the debounce time as needed
+    ).subscribe(query => {
+      this.txtSearch.emit(query);
+      console.log('Search box component');
+    });
+  }
 
   public onSearch(query: string): void {
     this.txtSearch.emit(query);
     console.log('Search box component');
+  }
+
+  public onKeypress(query:string): void {
+    this.searchSubject.next(query);
+    console.log('Key press event', query)
   }
 
 }
