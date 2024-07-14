@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Country} from "../../interfaces/Country.interface";
 import {CountriesService} from "../../services/countries.service";
+import {Region} from "../../interfaces/Region.interface";
 
 @Component({
   selector: 'app-by-region-page',
@@ -10,6 +11,13 @@ import {CountriesService} from "../../services/countries.service";
 export class ByRegionPageComponent {
 
   public placeholder: string = 'Búsqueda por Region';
+  public regions: Region[] = [
+    { id: 1, name: 'Africa' },
+    { id: 2, name: 'Americas' },
+    { id: 3, name: 'Asia' },
+    { id: 4, name: 'Europe' },
+    { id: 5, name: 'Oceania' },
+  ];
   public countries: Country[] = [];
   public isLoading: boolean = false;
 

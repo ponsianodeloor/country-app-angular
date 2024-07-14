@@ -8,6 +8,17 @@
     >
     </shared-search-box>
   </div>
+  <div class="col-3">
+    <select
+      class="form-control"
+      #regionSelect
+      (change)="searchByRegion(regionSelect.value)"
+    >
+      <option *ngFor="let region of regions" [value]="region.name">
+        {{ region.name }}
+      </option>
+    </select>
+  </div>
 </div>
 
 <div class="row">
