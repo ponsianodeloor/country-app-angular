@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {catchError, map, Observable, of, tap} from 'rxjs';
+import {catchError, delay, map, Observable, of, tap} from 'rxjs';
 
 import {Country} from "../interfaces/Country.interface";
 
@@ -14,6 +14,14 @@ export class CountriesService {
   constructor(
     private httpClient: HttpClient
   ) { }
+
+  private getCountriesRequest(url:string): Observable<Country[]> {
+    return this.httpClient.get<Country[]>(url)
+      .pipe(
+        catchError(() => of([])),
+        delay(2000)
+      );
+  }
 
   /**
    * Get all countries from the API https://restcountries.com//v3.1 by code
@@ -76,12 +84,13 @@ export class CountriesService {
    * @param name
    */
   searchCountryByRegion(name: string):Observable<Country[]> {
-    return this.httpClient.get<Country[]>(`${this.url}/region/${name}`).pipe(
+    return this.getCountriesRequest(`${this.url}/region/${name}`);
+    /*return this.httpClient.get<Country[]>(`${this.url}/region/${name}`).pipe(
       catchError(err => {
         console.log('Error en el catchError:', err);
         return of([]);
       })
-    );
+    );*/
   }
 
   /**
