@@ -4,6 +4,7 @@ import {catchError, delay, map, Observable, of, tap} from 'rxjs';
 
 import {Country} from "../interfaces/Country.interface";
 import {CacheStore} from "../interfaces/CacheStore.interface";
+import {Region} from "../interfaces/Region.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,8 @@ export class CountriesService {
       countries: []
     }
   };
+
+  public regionSelected: Region[] = [];
 
   constructor(
     private httpClient: HttpClient
@@ -107,7 +110,19 @@ export class CountriesService {
    * @param name
    */
   searchCountryByRegion(name: string):Observable<Country[]> {
-    return this.getCountriesRequest(`${this.url}/region/${name}`);
+    this.regionSelected = [
+      { id: 1, name: name }
+    ];
+
+    return this.getCountriesRequest(`${this.url}/region/${name}`)
+      .pipe(
+        tap(countries => {
+          this.cache.byRegion = {
+            region: this.regionSelected[0],
+            countries
+          }
+        })
+      );
     /*return this.httpClient.get<Country[]>(`${this.url}/region/${name}`).pipe(
       catchError(err => {
         console.log('Error en el catchError:', err);

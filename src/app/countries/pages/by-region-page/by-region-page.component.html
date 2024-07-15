@@ -12,8 +12,10 @@
     <select
       class="form-control"
       #regionSelect
+      [(ngModel)]="regionSelected"
       (change)="searchByRegion(regionSelect.value)"
     >
+      <option value="">Seleccionar</option>
       <option *ngFor="let region of regions" [value]="region.name">
         {{ region.name }}
       </option>
