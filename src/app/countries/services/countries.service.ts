@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {catchError, delay, map, Observable, of, tap} from 'rxjs';
 
 import {Country} from "../interfaces/Country.interface";
-import {CacheStore} from "../interfaces/cache-store.interface";
+import {CacheStore} from "../interfaces/CacheStore.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -121,11 +121,18 @@ export class CountriesService {
    * @param name
    */
   searchCountryByName(name: string):Observable<Country[]> {
-    return this.httpClient.get<Country[]>(`${this.url}/name/${name}`).pipe(
-      catchError(err => {
+    return this.httpClient.get<Country[]>(`${this.url}/name/${name}`)
+      .pipe(
+        catchError(err => {
         console.log('Error en el catchError:', err);
         return of([]);
-      })
+      }),
+        tap(countries => {
+          this.cache.byCountryName = {
+            name,
+            countries
+          }
+        })
     );
   }
 }
