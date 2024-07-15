@@ -5,6 +5,7 @@
     <!-- <input type="text" placeholder="Buscar por Capital" class="form-control">-->
     <shared-search-box
       [placeholder]="placeholder"
+      [value]="query"
       (txtSearch)="searchByCapital($event)"
     >
     </shared-search-box>

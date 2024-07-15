@@ -12,6 +12,9 @@ export class SearchBoxComponent implements OnDestroy{
   @Input()
   public placeholder: string = 'Search...';
 
+  @Input()
+  public value: string = '';
+
   @Output()
   public txtSearch: EventEmitter<string> = new EventEmitter<string>();
 
@@ -28,7 +31,7 @@ export class SearchBoxComponent implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-        this.searchSubject.unsubscribe();
+    this.searchSubject.unsubscribe();
   }
 
   public onSearch(query: string): void {
